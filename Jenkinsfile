@@ -19,9 +19,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-          sh './scripts/deploy.sh'
-          input message: 'Has acabado de ver el server? (Click "Proceed" para continuar)'
-          sh './scripts/kill.sh'
+          steps{
+            sh './scripts/deploy.sh'
+            input message: 'Has acabado de ver el server? (Click "Proceed" para continuar)'
+            sh './scripts/kill.sh'
+          }
         }
     }
 }
